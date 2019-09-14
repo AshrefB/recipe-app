@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Recipes</title>
+    </head>
+    <body>
+    <!--/*@thymesVar id="recipe" type="com.ashref.recipeapp.entities.Recipe"*/-->
+
+        <h2>Recipes:</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+            <tr th:each="recipe : ${recipes}">
+                <td th:text="${recipe.id}"></td>
+                <td th:text="${recipe.name}"></td>
+            </tr>
+        </table>
+    </body>
+</html>
