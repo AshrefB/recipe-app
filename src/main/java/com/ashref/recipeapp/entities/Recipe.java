@@ -1,5 +1,7 @@
 package com.ashref.recipeapp.entities;
 
+import com.ashref.recipeapp.enums.Difficulty;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +18,8 @@ public class Recipe {
     private String url;
     private String directions;
     private Byte[] image;
+    @Enumerated(EnumType.STRING)
+    private Difficulty difficulty;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients = new HashSet<>();
     @OneToOne(cascade = CascadeType.ALL)
@@ -83,6 +87,14 @@ public class Recipe {
 
     public void setImage(Byte[] image) {
         this.image = image;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 
     public Set<Ingredient> getIngredients() {
