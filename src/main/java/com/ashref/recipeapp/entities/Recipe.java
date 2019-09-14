@@ -1,6 +1,8 @@
 package com.ashref.recipeapp.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -14,6 +16,8 @@ public class Recipe {
     private String url;
     private String directions;
     private Byte[] image;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients = new HashSet<>();
     @OneToOne(cascade = CascadeType.ALL)
     private Note note;
 
@@ -79,6 +83,14 @@ public class Recipe {
 
     public void setImage(Byte[] image) {
         this.image = image;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public Note getNote() {
