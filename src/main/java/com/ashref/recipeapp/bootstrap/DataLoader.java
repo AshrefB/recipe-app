@@ -26,7 +26,6 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     }
 
     @Override
-   // @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
         loadData();
     }
