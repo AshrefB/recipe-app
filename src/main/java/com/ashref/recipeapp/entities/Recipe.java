@@ -122,11 +122,17 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
+    public void addIngredient(Ingredient ingredient) {
+        ingredient.setRecipe(this);
+        this.getIngredients().add(ingredient);
+    }
+
     public Note getNote() {
         return note;
     }
 
     public void setNote(Note note) {
+        note.setRecipe(this);
         this.note = note;
     }
 
