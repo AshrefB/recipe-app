@@ -5,6 +5,7 @@ import com.ashref.recipeapp.enums.Difficulty;
 import com.ashref.recipeapp.repositories.CategoryRepository;
 import com.ashref.recipeapp.repositories.RecipeRepository;
 import com.ashref.recipeapp.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     private final RecipeRepository recipeRepository;
@@ -27,6 +29,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
+        log.debug(this.getClass().getName()+": Loading data on startup");
         loadData();
     }
 
